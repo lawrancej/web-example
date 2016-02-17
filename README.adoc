@@ -1,0 +1,20 @@
+= Example application
+
+This document details the steps by which this example was made.
+
+== Initial project setup
+
+. Download and install https://nodejs.org/en/download/stable/[Node.js],
+a server-side JavaScript network application framework.
+. From the command line, install `express-generator` globally.
+Express is the web framework for Node.js.
++
+----
+npm install express-generator -g
+----
+. Use `express-generator` to generate boilerplate code.
++
+----
+express --hbs web-example
+cd web-example
+----
