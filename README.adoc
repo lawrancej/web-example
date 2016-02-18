@@ -18,3 +18,51 @@ npm install express-generator -g
 express --hbs web-example
 cd web-example
 ----
+. Add everything to version control
++
+----
+git init
+git add .
+git commit
+----
+
+== Running the project
+
+. Examine the `package.json` file. Notice the following dependencies:
++
+[horizontal]
+`body-parser`:: https://www.npmjs.com/package/body-parser[Parses HTTP POST bodies (i.e., form submissions)]
+`cookie-parser`:: https://www.npmjs.com/package/cookie-parser[Parses HTTP Cookies]
+`debug`:: https://www.npmjs.com/package/debug[Debugging utility]
+`express`:: https://www.npmjs.com/package/express[Node web framework] (http://expressjs.com/en/guide/routing.html[documentation])
+`hbs`:: https://www.npmjs.com/package/hbs[Handlebars template engine] (http://handlebarsjs.com/[documentation])
+`morgan`:: https://www.npmjs.com/package/morgan[HTTP request logger]
+`serve-favicon`:: https://www.npmjs.com/package/serve-favicon[Caching favicon server]
+
+. From the command line, install dependencies listed in `package.json`.
+This command may take a while to run.
++
+----
+npm install
+----
+
+. Node installs dependencies in `node_modules`.
+Since we don't want dependencies in version control, let's ignore them.
++
+----
+echo "node_modules" >> .gitignore
+----
+
+. Run the server to see the example project.
++
+----
+npm start
+----
+. Open http://localhost:3000/ in your browser. You should see *Welcome to Express*.
+. In the command line, `Ctrl`-`C` stops the server.
+. Add everything to version control.
++
+----
+git add .
+git commit
+----
