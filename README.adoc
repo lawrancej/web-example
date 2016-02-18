@@ -18,6 +18,36 @@ npm install express-generator -g
 express --hbs web-example
 cd web-example
 ----
+. Examine the files placed in this folder:
++
+----
+.
+├── app.js
+├── bin
+│   └── www
+├── package.json
+├── public
+│   ├── images
+│   ├── javascripts
+│   └── stylesheets
+│       └── style.css
+├── routes
+│   ├── index.js
+│   └── users.js
+└── views
+    ├── error.hbs
+    ├── index.hbs
+    └── layout.hbs
+----
++
+[horizontal]
+`app.js`:: The entry point into this project.
+`bin/www`:: A wrapper script for `app.js`
+`package.json`:: Configures project name, scripts, and dependencies.
+`public`:: Anything placed in this folder is served statically.
+`routes`:: Where to place server-side code.
+`views`:: Handlebars templates
+
 . Add everything to version control
 +
 ----
