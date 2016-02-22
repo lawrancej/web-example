@@ -2,10 +2,45 @@
 
 This document details the steps by which this example was made.
 
+== Preliminaries
+
+Download and install:
+
+. https://nodejs.org/en/download/stable/[Node.js],
+a server-side JavaScript network application framework.
+. http://git-scm.com/download/[Git], a version control system.
++
+[horizontal]
+*Windows*:: Stick with the default options and click `Next` until finished.
+*Mac OS X*:: Got an error? Try:
+* Apple menu -> System Preferences... -> Security & Privacy -> Open Anyway.
+* Otherwise, try: Spotlight Search (press `F4` or Command-Space) -> Terminal. Then, type `git` and follow instructions to install git.
+*Linux*:: Use `sudo` with your package manager.
+. The https://toolbelt.heroku.com/[Heroku toolbelt], to deploy to Heroku.
+. PostgreSQL, a database server.
++
+[horizontal]
+Windows:: http://www.enterprisedb.com/products-services-training/pgdownload#windows[Use the Postgres Installer].
++
+Then, Windows key -> Type "Environment" -> Add the `bin` directory of Postgres to your PATH (like this: `C:\Program Files\PostgreSQL\<VERSION>\bin`).
+Mac:: http://postgresapp.com/[Install Postgres.app].
++
+Move to Applications and Double-click to run.
++
+Then, from the command-line:
++
+----
+echo "export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin" >> ~/.bash_profile
+----
+
+Open the command-line.
+
+[horizontal]
+Windows:: Windows Key -> Type "Git Bash"
+Mac:: Spotlight Search (Command-Space) -> Type "Terminal"
+
 == Initial project setup
 
-. Download and install https://nodejs.org/en/download/stable/[Node.js],
-a server-side JavaScript network application framework.
 . From the command line, install `express-generator` globally.
 Express is the web framework for Node.js.
 +
@@ -48,16 +83,6 @@ cd web-example
 `routes`:: Where to place server-side code.
 `views`:: Handlebars templates
 
-. Add everything to version control
-+
-----
-git init
-git add .
-git commit
-----
-
-== Running the project
-
 . Examine the `package.json` file. Notice the following dependencies:
 +
 [horizontal]
@@ -68,6 +93,16 @@ git commit
 `hbs`:: https://www.npmjs.com/package/hbs[Handlebars template engine] (http://handlebarsjs.com/[documentation])
 `morgan`:: https://www.npmjs.com/package/morgan[HTTP request logger]
 `serve-favicon`:: https://www.npmjs.com/package/serve-favicon[Caching favicon server]
+
+. Add everything to version control
++
+----
+git init
+git add .
+git commit
+----
+
+== Run the project locally
 
 . From the command line, install dependencies listed in `package.json`.
 This command may take a while to run.
@@ -96,3 +131,45 @@ npm start
 git add .
 git commit
 ----
+
+== Deploy to Heroku
+
+. https://heroku.com[Heroku] is one of many modern web hosting services.
+Sign up to create your free account. Don't forget to validate your email!
+. https://toolbelt.heroku.com/[Download and install the Heroku toolbelt]. Then, login from the command-line.
++
+----
+heroku login
+----
+. Create an application on Heroku. This command creates a git remote called `heroku` (a place to deploy to).
++
+----
+heroku create
+----
+. Push to Heroku:
++
+----
+git push heroku master
+----
+. Open the web application in your browser.
++
+----
+heroku open
+----
+
+== Database setup
+
+. Install Node.js bindings to PostgreSQL.
++
+----
+npm install pg --save
+----
+. Provision a database on Heroku.
++
+----
+heroku addons:create heroku-postgresql:hobby-dev
+----
+
+== Next steps
+
+. https://devcenter.heroku.com/articles/custom-domains[Setup a custom domain name]
