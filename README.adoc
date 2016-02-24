@@ -169,7 +169,13 @@ npm install pg --save
 ----
 heroku addons:create heroku-postgresql:hobby-dev
 ----
+. Connect to the database
++
+----
+heroku pg:psql
+----
+. https://devcenter.heroku.com/articles/getting-started-with-nodejs#provision-a-database[Read more about Heroku and databases].
 
 == Next steps
 
-. https://devcenter.heroku.com/articles/custom-domains[Setup a custom domain name]
+. https://devcenter.heroku.com/articles/custom-domains[Setup a custom domain name] (Insert Coin)
