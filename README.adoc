@@ -169,12 +169,22 @@ npm install pg --save
 ----
 heroku addons:create heroku-postgresql:hobby-dev
 ----
-. Connect to the database
+. https://devcenter.heroku.com/articles/getting-started-with-nodejs#provision-a-database[Read more about Heroku and databases].
+
+== Authentication
+
+. Connect to the database.
 +
 ----
 heroku pg:psql
 ----
-. https://devcenter.heroku.com/articles/getting-started-with-nodejs#provision-a-database[Read more about Heroku and databases].
+. Once connected, create a login table with fields for the username, password, salt, and email.
+Remember: https://codahale.com/how-to-safely-store-a-password/[*NEVER* store the password] directly in the database.
++
+----
+CREATE TABLE users ("id" serial primary key, username text, password text, salt text, email text);
+----
+. https://www.npmjs.com/package/bcryptjs[Install bcryptjs]
 
 == Next steps
 
