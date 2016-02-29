@@ -10,7 +10,7 @@ router.get('/', function(req, response, next) {
       if (err) {
         response.json(process.env);
       } else {
-        response.json(result);
+        response.json(result.rows);
       }
     });
   });
