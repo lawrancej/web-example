@@ -157,6 +157,20 @@ git push heroku master
 heroku open
 ----
 
+== Run locally as Heroku would
+
+. Heroku wants a `Procfile` to ensure everything's configured right.
++
+----
+echo "web: npm start" > Procfile
+----
+. To run as Heroku would, but locally, do:
++
+----
+heroku local web
+----
+. Go to your server: http://localhost:5000/
+
 == Database setup
 
 . Install Node.js bindings to PostgreSQL.
@@ -185,6 +199,25 @@ Remember: https://codahale.com/how-to-safely-store-a-password/[*NEVER* store the
 CREATE TABLE users ("id" serial primary key, username text, password text, salt text, email text);
 ----
 . https://www.npmjs.com/package/bcryptjs[Install bcryptjs]
+
+== Books
+
+. Connect to the databse:
++
+----
+heroku pg:psql
+----
+. Create table `book` (nope, it's not normalized by any stretch):
++
+----
+create table book (id serial primary key, author text, title text, published date, pages integer, language char(2));
+----
+. Insert a row into `book`:
++
+----
+insert into book(author,title,published,pages,language) values('Stephen King', 'Misery', '1988-01-01', 300, 'en');
+----
+
 
 == Next steps
 
