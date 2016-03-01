@@ -177,6 +177,7 @@ heroku local web
 +
 ----
 npm install pg --save
+npm install pg-native --save
 ----
 . Provision a database on Heroku.
 +
