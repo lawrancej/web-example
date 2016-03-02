@@ -189,6 +189,22 @@ heroku addons:create heroku-postgresql:hobby-dev
 
 == Authentication
 
+. https://www.npmjs.com/package/bcryptjs[Install bcryptjs]
++
+----
+npm install bcryptjs --save
+----
+. https://passportjs.org[Install passport.js]
++
+----
+npm install passport --save
+npm install passport-local --save
+----
+. Install express-session
++
+----
+npm install express-session --save
+----
 . Connect to the database.
 +
 ----
@@ -198,13 +214,23 @@ heroku pg:psql
 Remember: https://codahale.com/how-to-safely-store-a-password/[*NEVER* store the password] directly in the database.
 +
 ----
-CREATE TABLE users ("id" serial primary key, username text, password text, salt text, email text);
+CREATE TABLE users ("id" serial primary key, username text, password text);
 ----
-. https://www.npmjs.com/package/bcryptjs[Install bcryptjs]
+. Add a user (`admin`) with password `hello` (for testing purposes only):
++
+----
+INSERT INTO users (username,password) VALUES('admin','$2a$10$tXMKF036p0ZYIxF/cJEHauw/TFrcho4DXy41Kt12D3Lbnzr221hmK');
+----
+. The code that must change is rather intricate.
+Study the authentication commit in this repo carefully.
++
+----
+gitk --all &
+----
 
 == Books
 
-. Connect to the databse:
+. Connect to the database:
 +
 ----
 heroku pg:psql
@@ -253,6 +279,7 @@ app.use('/books', books);
 ----
 heroku local web
 ----
+. Go to http://localhost:5000/books
 
 == Next steps
 
