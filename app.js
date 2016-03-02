@@ -72,6 +72,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
+  proxy: true,
   secret: 'web example',
   resave: false,
   saveUninitialized: true,
