@@ -200,7 +200,7 @@ npm install bcryptjs --save
 npm install passport --save
 npm install passport-local --save
 ----
-. Install express-session
+. https://github.com/expressjs/session[Install express-session]
 +
 ----
 npm install express-session --save
