@@ -186,6 +186,12 @@ npm install pg-native --save
 heroku addons:create heroku-postgresql:hobby-dev
 ----
 . https://devcenter.heroku.com/articles/getting-started-with-nodejs#provision-a-database[Read more about Heroku and databases].
+. Write the Heroku database URL into `.env`, otherwise you cannot test locally.
++
+----
+heroku config:get DATABASE_URL -s  >> .env
+echo .env >> .gitignore
+----
 
 == Authentication
 
@@ -254,7 +260,7 @@ var pg = require('pg').native;
 
 /* GET home page. */
 router.get('/', function(req, response, next) {
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+  pg.connect(process.env.DATABASE_URL + "?ssl=true", function(err, client, done) {
     client.query('SELECT * FROM book', function(err, result) {
       done();
       if (err) {
@@ -280,6 +286,29 @@ app.use('/books', books);
 heroku local web
 ----
 . Go to http://localhost:5000/books
+
+== Debugging
+
+The time will come when you'll need to debug.
+
+----
+# Debug code deployed to Heroku
+heroku run node debug ./bin/www
+# Debug local code
+heroku local:run node debug ./bin/www
+# debug
+node debug ./bin/www
+----
+
+https://nodejs.org/api/debugger.html[Using the debugger] consists of setting breakpoints, stepping through the code, and printing information.
+
+----
+setBreakpoint("routes/users.js",51);
+next
+cont
+----
+
+
 
 == Next steps
 

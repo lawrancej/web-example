@@ -23,14 +23,18 @@ passport.use(new LocalStrategy({
 },
 function(username, password, done) {
   pg.connect(process.env.DATABASE_URL, function(err, client, next) {
+    if (err) {
+      return console.err("Unable to connect to database");
+    }
     console.log("Connected to database");
     client.query('SELECT * FROM users WHERE username = $1', [username], function(err, result) {
+      // Release client back to pool
       next();
       if (err) {
         console.log("Database error");
         return done(err);
       }
-      if (result.rows) {
+      if (result.rows.length > 0) {
         var matched = bcrypt.compareSync(password, result.rows[0].password);
         if (matched) {
           console.log("Successful login");
@@ -53,6 +57,7 @@ passport.deserializeUser(function(id, done) {
   pg.connect(process.env.DATABASE_URL, function(err, client, next) {
     client.query('SELECT id, username FROM users WHERE id = $1', [id], function(err, result) {
       next();
+      // Return the user
       if (result) {
         return done(null, result.rows[0]);
       }
