@@ -42,7 +42,7 @@ Mac:: Spotlight Search (Command-Space) -> Type "Terminal"
 == Initial project setup
 
 . From the command line, install `express-generator` globally.
-Express is the web framework for Node.js.
+http://expressjs.com/[Express] is the web framework for Node.js.
 +
 ----
 npm install express-generator -g
@@ -143,7 +143,7 @@ git commit
 == Deploy to Heroku
 
 . https://heroku.com[Heroku] is one of many modern web hosting services.
-Sign up to create your free account. Don't forget to validate your email!
+https://signup.heroku.com/login[Sign up] to create your free account. Don't forget to validate your email!
 . https://toolbelt.heroku.com/[Download and install the Heroku toolbelt]. Then, login from the command-line.
 +
 ----
