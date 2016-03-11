@@ -47,6 +47,14 @@ Express is the web framework for Node.js.
 ----
 npm install express-generator -g
 ----
++
+[NOTE]
+====
+Did you get an `EACCES` error? If so, do this:
+----
+sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
+----
+====
 . Use `express-generator` to generate boilerplate code.
 +
 ----
