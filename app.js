@@ -24,7 +24,7 @@ passport.use(new LocalStrategy({
 function(username, password, done) {
   pg.connect(process.env.DATABASE_URL, function(err, client, next) {
     if (err) {
-      return console.err("Unable to connect to database");
+      return console.error("Unable to connect to database");
     }
     console.log("Connected to database");
     client.query('SELECT * FROM users WHERE username = $1', [username], function(err, result) {
