@@ -140,6 +140,11 @@ git init
 ----
 heroku create
 ----
+. To verify things worked properly, check the git remotes. You should see `heroku` listed.
++
+----
+git remote -v
+----
 
 == Deploy to Heroku
 
@@ -169,6 +174,7 @@ git push heroku master
 ----
 heroku open
 ----
+. At this point, you should see *Welcome to Express* on Heroku.
 
 == Run locally as Heroku would
 
