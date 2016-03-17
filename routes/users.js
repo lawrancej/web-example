@@ -15,6 +15,7 @@ router.get('/login',
   });
 
 router.post('/login',
+  // This is where authentication happens
   passport.authenticate('local', { failureRedirect: 'login' }),
   function(req, res,next) {
     // res.json(req.user);

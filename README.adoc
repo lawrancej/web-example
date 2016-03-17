@@ -102,14 +102,6 @@ cd web-example
 `morgan`:: https://www.npmjs.com/package/morgan[HTTP request logger]
 `serve-favicon`:: https://www.npmjs.com/package/serve-favicon[Caching favicon server]
 
-. Add everything to version control
-+
-----
-git init
-git add .
-git commit
-----
-
 == Run the project locally
 
 . From the command line, install dependencies listed in `package.json`.
@@ -119,13 +111,6 @@ This command may take a while to run.
 npm install
 ----
 
-. Node installs dependencies in `node_modules`.
-Since we don't want dependencies in version control, let's ignore them.
-+
-----
-echo "node_modules" >> .gitignore
-----
-
 . Run the server to see the example project.
 +
 ----
@@ -133,18 +118,28 @@ npm start
 ----
 . Open http://localhost:3000/ in your browser. You should see *Welcome to Express*.
 . In the command line, `Ctrl`-`C` stops the server.
-. Add everything to version control.
-+
-----
-git add .
-git commit
-----
 
 == Deploy to Heroku
 
-. https://heroku.com[Heroku] is one of many modern web hosting services.
+https://heroku.com[Heroku] is one of many modern web hosting services, and it uses git for deployment.
 https://signup.heroku.com/login[Sign up] to create your free account. Don't forget to validate your email!
-. https://toolbelt.heroku.com/[Download and install the Heroku toolbelt]. Then, login from the command-line.
+
+. Node installs dependencies in `node_modules`.
+Since we don't want dependencies in git, let's ignore them.
++
+----
+echo "node_modules" >> .gitignore
+----
+
+. Add everything to version control.
++
+----
+git init
+git add .
+git commit -m "Initial commit"
+----
+
+. Then, login from the command-line.
 +
 ----
 heroku login
