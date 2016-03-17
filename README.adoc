@@ -119,10 +119,27 @@ npm start
 . Open http://localhost:3000/ in your browser. You should see *Welcome to Express*.
 . In the command line, `Ctrl`-`C` stops the server.
 
-== Deploy to Heroku
+== Setup Heroku
 
 https://heroku.com[Heroku] is one of many modern web hosting services, and it uses git for deployment.
-https://signup.heroku.com/login[Sign up] to create your free account. Don't forget to validate your email!
+
+. https://signup.heroku.com/login[Sign up] to create your free account on Heroku. Don't forget to validate your email!
+
+. Log in to Heroku from the command-line.
++
+----
+heroku login
+----
+. Create an application on Heroku. This command creates a git remote called `heroku` (a place to deploy to).
++
+----
+heroku create
+----
+
+== Deploy to Heroku
+
+Now that setup is out of the way, let's deploy to Heroku.
+You do not need to repeat the Heroku setup steps for subsequent deploys.
 
 . Node installs dependencies in `node_modules`.
 Since we don't want dependencies in git, let's ignore them.
@@ -137,17 +154,6 @@ echo "node_modules" >> .gitignore
 git init
 git add .
 git commit -m "Initial commit"
-----
-
-. Then, login from the command-line.
-+
-----
-heroku login
-----
-. Create an application on Heroku. This command creates a git remote called `heroku` (a place to deploy to).
-+
-----
-heroku create
 ----
 . Push to Heroku:
 +
