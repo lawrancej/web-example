@@ -130,6 +130,11 @@ https://heroku.com[Heroku] is one of many modern web hosting services, and it us
 ----
 heroku login
 ----
+. Initialize git.
++
+----
+git init
+----
 . Create an application on Heroku. This command creates a git remote called `heroku` (a place to deploy to).
 +
 ----
@@ -151,7 +156,6 @@ echo "node_modules" >> .gitignore
 . Add everything to version control.
 +
 ----
-git init
 git add .
 git commit -m "Initial commit"
 ----
