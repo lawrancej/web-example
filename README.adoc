@@ -33,13 +33,13 @@ Then, from the command-line:
 echo "export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin" >> ~/.bash_profile
 ----
 
-Open the command-line.
+== Initial project setup
 
+. Open the command-line.
++
 [horizontal]
 Windows:: Windows Key -> Type "Git Bash"
 Mac:: Spotlight Search (Command-Space) -> Type "Terminal"
-
-== Initial project setup
 
 . From the command line, install `express-generator` globally.
 http://expressjs.com/[Express] is the web framework for Node.js.
@@ -58,8 +58,12 @@ sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
 . Use `express-generator` to generate boilerplate code.
 +
 ----
-express --hbs web-example
-cd web-example
+express --hbs project
+----
+. Go into your project folder. Assume all subsequent steps occur in this folder.
++
+----
+cd project
 ----
 . Examine the files placed in this folder:
 +
@@ -145,18 +149,17 @@ heroku create
 ----
 git remote -v
 ----
-
-== Deploy to Heroku
-
-Now that setup is out of the way, let's deploy to Heroku.
-You do not need to repeat the Heroku setup steps for subsequent deploys.
-
 . Node installs dependencies in `node_modules`.
 Since we don't want dependencies in git, let's ignore them.
 +
 ----
 echo "node_modules" >> .gitignore
 ----
+
+== Deploy to Heroku
+
+Now that setup is out of the way, let's deploy to Heroku.
+You do not need to repeat the Heroku setup steps for subsequent deploys.
 
 . Add everything to version control.
 +
