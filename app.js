@@ -9,6 +9,7 @@ var users = require('./routes/users');
 var books = require('./routes/books');
 
 var app = express();
+require('dotenv').config();
 
 var session = require('express-session');
 
