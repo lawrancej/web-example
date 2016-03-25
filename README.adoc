@@ -2,6 +2,12 @@
 
 This document details the steps by which this example was made.
 
+To begin with this example, copy this code into your terminal:
+
+----
+curl https://raw.githubusercontent.com/lawrancej/web-example/master/main.sh | bash
+----
+
 == Preliminaries
 
 Download and install:
